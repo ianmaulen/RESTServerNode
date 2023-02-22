@@ -3,7 +3,6 @@ const bcryptjs = require('bcryptjs');
 
 const Usuario = require('../models/user');
 
-
 const usuariosGet = async(req = request, res = response) => {
 
     const {limite = 5} = req.query;
@@ -30,8 +29,6 @@ const usuariosPost = async (req, res = response) => {
 
     const {nombre, correo, password, rol} = req.body;
     const usuario = new Usuario({ nombre, correo, password, rol });
-    //verificar si correo existe 
-    
 
     //encriptar contrasena
     const salt = bcryptjs.genSaltSync();
@@ -48,12 +45,12 @@ const usuariosPut = async(req, res = response) => {
     const { id } = req.params;
     const { _id, password, google, correo, rol, ...resto } = req.body;
 
-     if( password ) {
+    if( password ) {
         const salt = bcryptjs.genSaltSync();
         resto.password = bcryptjs.hashSync(password, salt);
-     }
+    }
 
-     const usuario = await Usuario.findByIdAndUpdate( id, resto );
+    const usuario = await Usuario.findByIdAndUpdate( id, resto );
 
     res.json(usuario);
 }
