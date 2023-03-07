@@ -7,6 +7,3 @@ Backend realizado con Node, siguiendo el curso de 'Node: de cero a experto' en U
 ## Para levantar el server
 
 Ejecutar ```npm install``` en terminal para instalar dependencias necesarias
-
-
-
